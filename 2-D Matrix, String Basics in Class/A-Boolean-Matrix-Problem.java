@@ -3,38 +3,42 @@ import java.util.*; // contains Collections framework
 
 // don't change the name of this class
 // you can add inner classes if needed
+
 class Main {
-    public static void main(String[] args) {
-        // Your code here
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        while (t > 0) {
-            int row = sc.nextInt();
-            int col = sc.nextInt();
-            int arr[][] = new int[row][col];
-            for (int i = 0; i < row; i++) {
-                for (int j = 0; j < col; j++) {
-                    arr[i][j] = sc.nextInt();
-                }
-            }
 
-            for (int i = 0; i < row; i++) {
-                for (int j = 0; j < col; j++) {
-                    if (arr[i][j] == 1) {
-                        for (int x = 0; x < 1; x++) {
-                            for (int y = 0; y < col; y++) {
-                                System.out.print("1 ");
-                            }
-                        }
-                        System.out.println();
-                    } else {
-                        System.out.print("0 ");
-                    }
-                    break;
-                }
+	static int MAX = 1000;
+	static int a[][] = new int[MAX][MAX];
 
-            }
-            t--;
-        }
-    }
+	public static void main (String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int t = Integer.parseInt(br.readLine());
+		while(t-- > 0){
+			String str[] = br.readLine().trim().split(" ");
+			int n = Integer.parseInt(str[0]);
+			int m = Integer.parseInt(str[1]);
+			boolean b[] = new boolean[n];
+			for(int i=0;i<n;i++){
+				str = br.readLine().trim().split(" ");
+				for(int j=0;j<m;j++){
+					a[i][j] = Integer.parseInt(str[j]);
+					if(a[i][j]==1){
+						b[i]=true;
+					}
+				}
+			}
+			for(int i = 0; i < n; i++){
+				if(b[i]){
+					for(int j = 0; j < m; j++){
+						System.out.print("1 ");
+					}
+				}
+				else{
+					for(int j = 0; j < m; j++){
+						System.out.print("0 ");
+					}
+				}
+				System.out.println();
+			}
+		}
+	}
 }
